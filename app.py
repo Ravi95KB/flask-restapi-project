@@ -23,10 +23,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  #To turn off the Flask tra
 app.secret_key = 'ravi'
 api = Api(app)
 
-@app.before_first_request                      #This method will create the table in data.db before any API request is sent.
-def create_tables():
-    db.create_all()
-
 #creates another endpoint with /auth
 jwt = JWT(app, autheticate, identity) 
 
