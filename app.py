@@ -6,6 +6,7 @@ Created on Tue Dec  8 15:45:54 2020
 """
 
 '''We are using flask_restful instead of normal flask library, so the syntax is gonna be different'''
+import os
 
 from flask import Flask
 from flask_restful import Api
@@ -18,7 +19,7 @@ from security import autheticate, identity
 from db import db
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  #To turn off the Flask tracking
 app.secret_key = 'ravi'
 api = Api(app)
